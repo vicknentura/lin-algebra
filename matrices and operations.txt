@@ -1,0 +1,199 @@
+# From a list of rows, create a 2×3 matrix with the first row containing 3, 14, 159, and the second row containing the numbers -2, 7, 183.
+
+import numpy as np
+matrix = np.array([[3, 14, 159], [-2, 7, 183]])
+print(matrix)
+
+
+# The mobile carrier T-phone wants to analyze clients' daily usage data. The table shows the number of text messages, minutes of conversation, and megabytes for five customers on Monday. Convert the table to a matrix and print it (in precode).
+
+import numpy as np
+import pandas as pd
+monday_df = pd.DataFrame({'Minutes': [10, 3, 15, 27, 7], 
+                          'Messages': [2, 5, 3, 0, 1], 
+                          'Megabytes': [72, 111, 50, 76, 85]})
+monday = monday_df.values
+print(monday)
+
+
+# Select data for the fourth client from the resulting matrix (careful with the indices!). Print the result.
+
+import numpy as np
+import pandas as pd
+monday_df = pd.DataFrame({'Minutes': [10, 3, 15, 27, 7], 
+                          'Messages': [2, 5, 3, 0, 1], 
+                          'Megabytes': [72, 111, 50, 76, 85]}) 
+
+monday = monday_df.values
+print(monday[3])
+
+
+
+# From the monday matrix, select how much data each client used. Print the result.
+
+import numpy as np
+import pandas as pd
+monday_df = pd.DataFrame({'Minutes': [10, 3, 15, 27, 7], 
+                          'Messages': [2, 5, 3, 0, 1], 
+                          'Megabytes': [72, 111, 50, 76, 85]})
+monday = monday_df.values
+print(monday[:, 2])
+
+
+# The mobile carrier T-phone is back with user data for the entire week. Unify the data into one matrix for the week. Print it on the screen (in precode).
+# Create a forecast for the month. Based on weekly data, find out how much each client uses the services on average per day. Then multiply this average by 30.4 (the average number of days in a month).
+
+import numpy as np
+import pandas as pd
+
+services = ['Minutes', 'Messages', 'Megabytes']
+
+monday = np.array([
+    [10, 2, 72],
+    [3, 5, 111],
+    [15, 3, 50],
+    [27, 0, 76],
+    [7, 1, 85]])
+
+tuesday = np.array([
+    [33, 0, 108],
+    [21, 5, 70],
+    [15, 2, 15],
+    [29, 6, 34],
+    [2, 1, 146]])
+
+wednesday = np.array([
+    [16, 0, 20],
+    [23, 5, 34],
+    [5, 0, 159],
+    [35, 1, 74],
+    [5, 0, 15]])
+
+thursday = np.array([
+    [25, 1, 53],
+    [15, 0, 26],
+    [10, 0, 73],
+    [18, 1, 24],
+    [2, 2, 24]])
+
+friday = np.array([
+    [32, 0, 33],
+    [4, 0, 135],
+    [2, 2, 21],
+    [18, 5, 56],
+    [27, 2, 21]])
+
+saturday = np.array([
+    [28, 0, 123],
+    [16, 5, 165],
+    [10, 1, 12],
+    [42, 4, 80],
+    [18, 2, 20]])
+
+sunday = np.array([
+    [30, 4, 243],
+    [18, 2, 23],
+    [12, 2, 18],
+    [23, 0, 65],
+    [34, 0, 90]])
+
+weekly = monday + tuesday + wednesday + thursday + friday + saturday + sunday
+print('In a week')
+print(pd.DataFrame(weekly, columns=services))
+print()
+forecast = weekly * 30.4 / 7
+print('Forecast for a month')
+print(pd.DataFrame(forecast, dtype=int, columns=services))
+
+
+# Calculate the number of minutes, text messages, and Internet traffic spent by the second client over the course of the month. Save the result in the client_services variable and print the result on the screen (already in the precode).
+
+import numpy as np
+import pandas as pd
+
+services = ['Minutes', 'Messages', 'Megabytes']
+packs_names = ['"Behind the wheel"', '"On the subway"']
+packs = np.array([[20, 5], [2, 5], [500, 1000]])
+
+clients_packs = np.array([[1, 2], [2, 3], [4, 1], [2, 3], [5, 0]])
+
+print("Client's package")
+print(pd.DataFrame(clients_packs[1], index=packs_names, columns=['']))
+print()
+
+client_vector = clients_packs[1, :]
+client_services = np.dot(packs, client_vector)
+
+print('Minutes, Messages, Megabytes')
+print(client_services)
+
+
+# Calculate how much material it will take to produce 16 tables, 60 chairs, and 4 benches. Save the result in the materials variable and print the result on the screen (in precode).
+
+import numpy as np
+import pandas as pd
+materials_names = ['Board', 'Pipe', 'Screws']
+manufacture = np.array([
+    [0.2, 1.2, 8],
+    [0.5, 0.8, 6],
+    [0.8, 1.6, 8]])
+furniture = [60, 4, 16]
+materials = np.dot(furniture, manufacture)
+print(pd.DataFrame([materials], index=[''], columns=materials_names))
+
+
+# T-phone is back with yet another task. You have a matrix that contains data about the customers' content packages for a month.
+# Calculate the number of minutes, text messages, and megabytes spent by all clients during the month. Print the result in the clients_services matrix with rows corresponding to clients and columns corresponding to services.
+
+import numpy as np
+import pandas as pd
+
+services = ['Minutes', 'Messages', 'Megabytes']
+packs_names = ['"Behind the wheel', '"On the subway"']
+packs = np.array([
+    [20, 5],
+    [2, 5],
+    [500, 1000]])
+
+clients_packs = np.array([
+    [1, 2],
+    [2, 3],
+    [4, 1],
+    [2, 3],
+    [5, 0]])
+
+print('Packages')
+print(pd.DataFrame(clients_packs, columns=packs_names))
+print()
+
+clients_services = (packs @ clients_packs.T).T
+
+print('Minutes, Messages and Megabytes')
+print(pd.DataFrame(clients_services, columns=services))
+print()
+
+
+# Oak and Pine has received furniture orders from several different venues, and they need to know the quantities of the materials they need to fill the orders. As before, the manufacture matrix displays the materials needed for each of the different types of furniture, where the rows are types of furniture (chair, bench, and table), and the columns are the materials. For example, to make a chair, we need 0.2 meters of board, 1.2 meters of metal pipe, and 8 screws.
+# The furniture matrix shows the number of each piece of furniture in the different venues — a coffee shop, a diner, and a restaurant, where the rows are the venues, and the columns are the types of furniture. For example, the coffee shop needs 12 chairs, 0 benches, and 3 tables.
+# Find the venues_materials matrix, which lists establishments by row and materials for furnishing them by column. Print the result on the screen (in precode).
+
+import numpy  as np
+import pandas as pd
+materials_names = ['Board', 'Pipe', 'Screws']
+venues_names = ['Coffee shop', 'Diner', 'Restaurant']
+manufacture = np.array([
+    [0.2, 1.2, 8],
+    [0.5, 0.8, 6],
+    [0.8, 1.6, 8]])
+furniture = np.array([
+    [12, 0, 3],
+    [40, 2, 10],
+    [60, 6, 18]])
+venues_materials = furniture @ manufacture
+print('By the venue')
+print(pd.DataFrame(venues_materials, index=venues_names, columns=materials_names))
+print()
+venues = [18, 12, 7]
+total_materials = venues_materials.T @ venues
+print('Total')
+print(pd.DataFrame([total_materials], index=[''], columns=materials_names))

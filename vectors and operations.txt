@@ -1,0 +1,511 @@
+# Create two vectors. The first one contains all the ratings for the price. The second has ratings for the quality. Print the results (in precode).
+
+import numpy as np
+import pandas as pd
+
+ratings_values = [
+    [68,18], [81,19], [81,22], [15,75], [75,15], [17,72], 
+    [24,75], [21,91], [76, 6], [12,74], [18,83], [20,62], 
+    [21,82], [21,79], [84,15], [73,16], [88,25], [78,23], 
+    [32, 81], [77, 35]]
+ratings = pd.DataFrame(ratings_values, columns=['Price', 'Quality'])
+
+price = ratings['Price'].values
+quality = ratings['Quality'].values
+print('Price: ', price)
+print('Quality: ', quality)
+
+
+# Find the total number of LuxForVIP visitors. Find the fifth vector containing visitor ratings. Print the results (in precode).
+
+import numpy as np
+import pandas as pd
+
+ratings_values = [
+    [68,18], [81,19], [81,22], [15,75], [75,15], [17,72], 
+    [24,75], [21,91], [76, 6], [12,74], [18,83], [20,62], 
+    [21,82], [21,79], [84,15], [73,16], [88,25], [78,23], 
+    [32, 81], [77, 35]]
+ratings = pd.DataFrame(ratings_values, columns=['Price', 'Quality'])
+
+visitors_count = len(ratings['Price'].values)
+visitor4 = ratings.loc[4].values
+print('Number of visitors:', visitors_count)
+print('Visitor 4:', visitor4)
+
+
+# The table has the values attribute. values is a two-dimensional array. Call the list() function to convert this array into a list of vectors with ratings from all visitors. Print the results (in precode).
+
+import numpy as np
+import pandas as pd
+
+ratings_values = [
+    [68,18], [81,19], [81,22], [15,75], [75,15], [17,72], 
+    [24,75], [21,91], [76, 6], [12,74], [18,83], [20,62], 
+    [21,82], [21,79], [84,15], [73,16], [88,25], [78,23], 
+    [32, 81], [77, 35]]
+ratings = pd.DataFrame(ratings_values, columns=['Price', 'Quality'])
+
+vector_list = list(ratings.values)
+print(vector_list)
+
+
+# Plot the vector [75, 15] from the LuxForVIP case using an arrow.
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+vector = np.array([75, 15])
+plt.figure(figsize=(3.5,3.5))
+plt.axis([0, 100, 0, 100])
+plt.arrow(0, 0, vector[0], vector[1], head_width=4, length_includes_head="True")
+plt.xlabel('Price')
+plt.ylabel('Quality')
+plt.grid(True)
+plt.show()
+
+
+# Plot all two-dimensional vectors with the visitor ratings of LuxForVIP using points on the plane.
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+ratings_values = [
+    [68,18], [81,19], [81,22], [15,75], [75,15], [17,72], 
+    [24,75], [21,91], [76, 6], [12,74], [18,83], [20,62], 
+    [21,82], [21,79], [84,15], [73,16], [88,25], [78,23], 
+    [32, 81], [77, 35]]
+ratings = pd.DataFrame(ratings_values, columns=['Price', 'Quality'])
+
+plt.figure(figsize=(3.5,3.5))
+plt.axis([0, 100, 0, 100])
+price = ratings['Price'].values
+quality = ratings['Quality'].values
+plt.plot(price, quality, 'ro')
+plt.xlabel('Price')
+plt.ylabel('Quality')
+plt.grid(True)
+plt.show()
+
+
+# Create two separate lists of two-dimensional vectors containing visitor ratings: for visitors who came from the mass-market aggregator, and for whose who came from the luxury aggregator. Name the variables visitors_1 and visitors_2.
+
+import numpy as np
+import pandas as pd
+
+ratings_values = [
+    [68,18], [81,19], [81,22], [15,75], [75,15], [17,72], 
+    [24,75], [21,91], [76, 6], [12,74], [18,83], [20,62], 
+    [21,82], [21,79], [84,15], [73,16], [88,25], [78,23], 
+    [32, 81], [77, 35]]
+ratings = pd.DataFrame(ratings_values, columns=['Price', 'Quality'])
+
+visitors_1 = []
+visitors_2 = []
+for visitor in list(ratings.values):
+    if visitor[0] < 40 and visitor[1] > 60:
+        visitors_1.append(visitor)
+    else:
+        visitors_2.append(visitor)
+
+print('Visitor ratings from the first aggregator:', visitors_1)
+print('Visitor ratings from the second aggregator:', visitors_2)
+
+
+# Take the quantity column from each table and convert it into a vector. 
+
+import numpy as np
+import pandas as pd
+
+quantity_1 = [25, 63, 80, 91, 81, 55, 14, 76, 33, 71]
+models = [
+    'Silicone case for iPhone 8',
+    'Leather case for iPhone 8',
+    'Silicone case for iPhone XS',
+    'Leather case for iPhone XS',
+    'Silicone case for iPhone XS Max',
+    'Leather case for iPhone XS Max',
+    'Silicone case for iPhone 11',
+    'Leather case for iPhone 11',
+    'Silicone case for iPhone 11 Pro',
+    'Leather case for iPhone 11 Pro',
+]
+stocks_1 = pd.DataFrame({'Quantity': quantity_1}, index=models)
+quantity_2 = [82, 24, 92, 48, 32, 45, 4, 34, 12, 1]
+stocks_2 = pd.DataFrame({'Quantity': quantity_2}, index=models)
+
+vector_of_quantity_1 = np.array(stocks_1['Quantity'])
+vector_of_quantity_2 = np.array(stocks_2['Quantity'])
+print(
+    'First store stocks:',
+    vector_of_quantity_1,
+    '\nSecond store stocks:',
+    vector_of_quantity_2,
+)
+
+
+# Find the vector of FoCaseology stocks after the merger.
+
+import numpy as np
+import pandas as pd
+
+quantity_1 = [25, 63, 80, 91, 81, 55, 14, 76, 33, 71]
+models = [
+    'Silicone case for iPhone 8',
+    'Leather case for iPhone 8',
+    'Silicone case for iPhone XS',
+    'Leather case for iPhone XS',
+    'Silicone case for iPhone XS Max',
+    'Leather case for iPhone XS Max',
+    'Silicone case for iPhone 11',
+    'Leather case for iPhone 11',
+    'Silicone case for iPhone 11 Pro',
+    'Leather case for iPhone 11 Pro',
+]
+stocks_1 = pd.DataFrame({'Quantity' : quantity_1}, index=models)
+quantity_2 = [82, 24, 92, 48, 32, 45, 4, 34, 12, 1]
+stocks_2 = pd.DataFrame({'Quantity' : quantity_2}, index=models)
+
+vector_of_quantity_1 = stocks_1['Quantity'].values
+vector_of_quantity_2 = stocks_2['Quantity'].values
+
+vector_of_quantity_united = vector_of_quantity_1 + vector_of_quantity_2
+print(vector_of_quantity_united)
+
+
+# Create a DataFrame for the store's stock after the merger. 
+
+import numpy as np
+import pandas as pd
+
+quantity_1 = [25, 63, 80, 91, 81, 55, 14, 76, 33, 71]
+models = [
+    'Silicone case for iPhone 8',
+    'Leather case for iPhone 8',
+    'Silicone case for iPhone XS',
+    'Leather case for iPhone XS',
+    'Silicone case for iPhone XS Max',
+    'Leather case for iPhone XS Max',
+    'Silicone case for iPhone 11',
+    'Leather case for iPhone 11',
+    'Silicone case for iPhone 11 Pro',
+    'Leather case for iPhone 11 Pro',
+]
+stocks_1 = pd.DataFrame({'Quantity' : quantity_1}, index=models)
+quantity_2 = [82, 24, 92, 48, 32, 45, 4, 34, 12, 1]
+stocks_2 = pd.DataFrame({'Quantity' : quantity_2}, index=models)
+
+vector_of_quantity_1 = stocks_1['Quantity'].values
+vector_of_quantity_2 = stocks_2['Quantity'].values
+vector_of_quantity_united = vector_of_quantity_1 + vector_of_quantity_2
+
+stocks_united = pd.DataFrame({'Quantity' : vector_of_quantity_united}, index=models)
+print(stocks_united)
+
+
+# Take the price column and convert it into a vector of numbers
+
+import numpy as np
+import pandas as pd
+
+quantity_1 = [25, 63, 80, 91, 81, 55, 14, 76, 33, 71]
+models = [
+    'Silicone case for iPhone 8',
+    'Leather case for iPhone 8',
+    'Silicone case for iPhone XS',
+    'Leather case for iPhone XS',
+    'Silicone case for iPhone XS Max',
+    'Leather case for iPhone XS Max',
+    'Silicone case for iPhone 11',
+    'Leather case for iPhone 11',
+    'Silicone case for iPhone 11 Pro',
+    'Leather case for iPhone 11 Pro',
+]
+stocks_1 = pd.DataFrame({'Quantity' : quantity_1}, index=models)
+quantity_2 = [82, 24, 92, 48, 32, 45, 4, 34, 12, 1]
+stocks_2 = pd.DataFrame({'Quantity' : quantity_2}, index=models)
+
+vector_of_quantity_1 = stocks_1['Quantity'].values
+vector_of_quantity_2 = stocks_2['Quantity'].values
+vector_of_quantity_united = vector_of_quantity_1 + vector_of_quantity_2
+
+stocks_united = pd.DataFrame(
+    {'Quantity': vector_of_quantity_united}, index=models
+)
+stocks_united['Price'] = [30, 21, 32, 22, 18, 17, 38, 12, 23, 29]
+
+price_united = stocks_united['Price'].values
+print(price_united)
+
+
+# FoCaseology announced a 10% discount on their entire range. Find the new price vector, taking the discount into account.
+
+import numpy as np
+import pandas as pd
+
+quantity_1 = [25, 63, 80, 91, 81, 55, 14, 76, 33, 71]
+models = [
+    'Silicone case for iPhone 8',
+    'Leather case for iPhone 8',
+    'Silicone case for iPhone XS',
+    'Leather case for iPhone XS',
+    'Silicone case for iPhone XS Max',
+    'Leather case for iPhone XS Max',
+    'Silicone case for iPhone 11',
+    'Leather case for iPhone 11',
+    'Silicone case for iPhone 11 Pro',
+    'Leather case for iPhone 11 Pro',
+]
+stocks_1 = pd.DataFrame({'Quantity': quantity_1}, index=models)
+quantity_2 = [82, 24, 92, 48, 32, 45, 4, 34, 12, 1]
+stocks_2 = pd.DataFrame({'Quantity': quantity_2}, index=models)
+
+vector_of_quantity_1 = stocks_1['Quantity'].values
+vector_of_quantity_2 = stocks_2['Quantity'].values
+vector_of_quantity_united = vector_of_quantity_1 + vector_of_quantity_2
+
+stocks_united = pd.DataFrame(
+    {'Quantity': vector_of_quantity_united}, index=models
+)
+stocks_united['Price'] = [30, 21, 32, 22, 18, 17, 38, 12, 23, 29]
+
+price_united = stocks_united['Price'].values
+
+price_discount_10 = price_united * 0.9
+stocks_united['10% discount price'] = price_discount_10.astype(int)
+print(stocks_united)
+
+
+# When the sale ended, FoCaseology raised the prices by 10%.
+
+import numpy as np
+import pandas as pd
+
+quantity_1 = [25, 63, 80, 91, 81, 55, 14, 76, 33, 71]
+models = [
+    'Silicone case for iPhone 8',
+    'Leather case for iPhone 8',
+    'Silicone case for iPhone XS',
+    'Leather case for iPhone XS',
+    'Silicone case for iPhone XS Max',
+    'Leather case for iPhone XS Max',
+    'Silicone case for iPhone 11',
+    'Leather case for iPhone 11',
+    'Silicone case for iPhone 11 Pro',
+    'Leather case for iPhone 11 Pro',
+]
+stocks_1 = pd.DataFrame({'Quantity': quantity_1}, index=models)
+quantity_2 = [82, 24, 92, 48, 32, 45, 4, 34, 12, 1]
+stocks_2 = pd.DataFrame({'Quantity': quantity_2}, index=models)
+
+vector_of_quantity_1 = stocks_1['Quantity'].values
+vector_of_quantity_2 = stocks_2['Quantity'].values
+vector_of_quantity_united = vector_of_quantity_1 + vector_of_quantity_2
+
+stocks_united = pd.DataFrame(
+    {'Quantity': vector_of_quantity_united}, index=models
+)
+stocks_united['Price'] = [30, 21, 32, 22, 18, 17, 38, 12, 23, 29]
+
+price_united = stocks_united['Price'].values
+price_discount_10 = price_united * 0.9
+stocks_united['10% discount prise'] = price_discount_10.astype(int)
+
+price_no_discount = price_discount_10 * 1.1
+stocks_united['10% raise price'] = price_no_discount.astype(int)
+print(stocks_united)
+
+
+# Find the average quality rating.
+
+import numpy as np
+import pandas as pd
+
+ratings_values = [
+    [68,18], [81,19], [81,22], [15,75], [75,15], [17,72], 
+    [24,75], [21,91], [76, 6], [12,74], [18,83], [20,62], 
+    [21,82], [21,79], [84,15], [73,16], [88,25], [78,23], 
+    [32, 81], [77, 35]]
+ratings = pd.DataFrame(ratings_values, columns=['Price', 'Quality'])
+
+# < write code here >
+
+average_quality_rat =  # < write code here >
+print(average_quality_rat)
+
+
+# Find the average quality rating.
+
+import numpy as np
+import pandas as pd
+
+ratings_values = [
+    [68,18], [81,19], [81,22], [15,75], [75,15], [17,72], 
+    [24,75], [21,91], [76, 6], [12,74], [18,83], [20,62], 
+    [21,82], [21,79], [84,15], [73,16], [88,25], [78,23], 
+    [32, 81], [77, 35]]
+ratings = pd.DataFrame(ratings_values, columns=['Price', 'Quality'])
+
+quality = ratings['Quality'].values
+sum_quality = sum(quality)
+average_quality_rat = sum_quality / len(quality)
+print(average_quality_rat)
+
+
+# Combine the average quality and price ratings for all visitors into one vector.
+
+import numpy as np
+import pandas as pd
+
+ratings_values = [
+    [68,18], [81,19], [81,22], [15,75], [75,15], [17,72], 
+    [24,75], [21,91], [76, 6], [12,74], [18,83], [20,62], 
+    [21,82], [21,79], [84,15], [73,16], [88,25], [78,23], 
+    [32, 81], [77, 35]]
+ratings = pd.DataFrame(ratings_values, columns=['Price', 'Quality'])
+
+price = ratings['Price'].values
+sum_prices = sum(price)
+average_price_rat = sum(price) / len(price)
+
+quality = ratings['Quality'].values
+average_quality_rat = sum(quality) / len(quality)
+
+average_rat = np.array([average_price_rat, average_quality_rat])
+print(average_rat)
+
+
+# On the coordinate plane, indicate the obtained value. Can the resulting vector be considered the average visitor's rating? 
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+ratings_values = [
+    [68,18], [81,19], [81,22], [15,75], [75,15], [17,72], 
+    [24,75], [21,91], [76, 6], [12,74], [18,83], [20,62], 
+    [21,82], [21,79], [84,15], [73,16], [88,25], [78,23], 
+    [32, 81], [77, 35]]
+ratings = pd.DataFrame(ratings_values, columns=['Price', 'Quality'])
+
+price = ratings['Price'].values
+sum_prices = sum(price)
+average_price_rat = sum(price) / len(price)
+
+quality = ratings['Quality'].values
+average_quality_rat = sum(quality) / len(quality)
+average_rat = np.array([average_price_rat, average_quality_rat])
+
+plt.figure(figsize=(7, 7))
+plt.axis([0, 100, 0, 100])
+plt.plot(average_rat[0], average_rat[1], 'mo', markersize=15, label='Mean value')
+plt.plot(price, quality, 'ro', label='Ratings')
+plt.xlabel('Price')
+plt.ylabel('Quality')
+plt.grid(True)
+plt.title('Distribution of ratings and mean value for the whole sample')
+plt.legend()
+plt.show()
+
+
+# Separately calculate average ratings for the visitors that came from the mass-market aggregator and for whose came from the luxury brand aggregator. 
+
+import numpy as np
+import pandas as pd
+
+ratings_values = [
+    [68,18], [81,19], [81,22], [15,75], [75,15], [17,72], 
+    [24,75], [21,91], [76, 6], [12,74], [18,83], [20,62], 
+    [21,82], [21,79], [84,15], [73,16], [88,25], [78,23], 
+    [32, 81], [77, 35]]
+ratings = pd.DataFrame(ratings_values, columns=['Price', 'Quality'])
+
+clients_1 = []
+clients_2 = []
+for client in list(ratings.values):
+    if client[0] < 40 and client[1] > 60:
+        clients_1.append(client)
+    else:
+        clients_2.append(client)
+
+average_client_1 = np.array([sum([x[0] for x in clients_1]) / len(clients_1), sum([x[1] for x in clients_1]) / len(clients_1)])
+print('First aggregator average rating: ', average_client_1)
+
+average_client_2 = np.array([sum([x[0] for x in clients_2]) / len(clients_2), sum([x[1] for x in clients_2]) / len(clients_2)])
+print('Second aggregator average rating: ', average_client_2)
+
+
+# On the diagram with individual visitor ratings, indicate the obtained values. Can each obtained mean be considered the average visitor rating for the respective group? 
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+ratings_values = [
+    [68,18], [81,19], [81,22], [15,75], [75,15], [17,72], 
+    [24,75], [21,91], [76, 6], [12,74], [18,83], [20,62], 
+    [21,82], [21,79], [84,15], [73,16], [88,25], [78,23], 
+    [32, 81], [77, 35]]
+ratings = pd.DataFrame(ratings_values, columns=['Price', 'Quality'])
+price = ratings['Price'].values
+quality = ratings['Quality'].values
+
+clients_1 = []
+clients_2 = []
+for client in list(ratings.values):
+    if client[0] < 40 and client[1] > 60:
+        clients_1.append(client)
+    else:
+        clients_2.append(client)
+
+average_client_1 = np.array([sum([x[0] for x in clients_1]) / len(clients_1), sum([x[1] for x in clients_1]) / len(clients_1)])
+
+average_client_2 = np.array([sum([x[0] for x in clients_2]) / len(clients_2), sum([x[1] for x in clients_2]) / len(clients_2)])
+
+plt.figure(figsize=(7, 7))
+plt.axis([0, 100, 0, 100])
+
+# draw the mean for group 1
+plt.plot(average_client_1[0], average_client_1[1], 'bo', markersize=15)
+
+# draw the mean for group 2
+plt.plot(average_client_2[0], average_client_2[1], 'go', markersize=15)
+plt.plot(price, quality, 'ro')
+plt.xlabel('Price')
+plt.ylabel('Quality')
+plt.grid(True)
+plt.title('Distribution of ratings and mean value for each group')
+plt.show()
+
+
+# Write the logistic_transform() function to perform the logistic transformation. Apply it to all the elements of the array. 
+
+import numpy as np
+def logistic_transform(values):
+    return 1 / (1 + np.exp(-values))
+
+our_values = np.array([-20, 0, 0.5, 80, -1])
+print(logistic_transform(our_values))
+
+
+#Calculate MAE
+import numpy as np
+def mae(target, predictions):
+    return np.mean(np.abs(target - predictions))
+
+# Write the function to calculate MAE using mean(). Find the MAE and print the results (in precode).
+target = np.array([0.9, 1.2, 1.4, 1.5, 1.9, 2.0])
+predictions = np.array([1.0, 1.2, 1.4, 1.6, 1.8, 2.0])
+
+print(mae(target, predictions))
+
+
+#Calculate RMSE
+import numpy as np
+def rmse(target, predictions):
+    return np.sqrt(np.mean((target - predictions) ** 2))
+target = np.array([0.9, 1.2, 1.4, 1.5, 1.9, 2.0])
+predictions = np.array([1.0, 1.2, 1.4, 1.6, 1.8, 2.0])
+
+print(rmse(target, predictions))
